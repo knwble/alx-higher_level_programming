@@ -8,24 +8,23 @@
  * Return: If no cycle - 0
  *         If there is a cycle - 1
  */
-
 int check_cycle(listint_t *list)
 {
-	listint_t *turtle, *hare;
+	listint_t *slow, *fast;
 
 	if (list == NULL || list->next == NULL)
 		return (0);
 
-	turtle = list->next;
-	hare = list->next->next;
+	slow = list->next;
+	fast = list->next->next;
 
-	while (turtle && hare && hare->next)
+	while (slow && fast && fast->next)
 	{
-		if (turtle == hare)
+		if (slow == fast)
 			return (1);
 
-		turtle = turtle->next;
-		hare = hare->next->next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 
 	return (0);

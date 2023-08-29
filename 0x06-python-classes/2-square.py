@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+# 2-square.py
 
 
 class Square:
     """This is a class defining a square.
     """
+
     def __init__(self, size=0):
         """Declares the method where the size of the sqaure is defined.
         Args:

@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 # 4-square.py
 """A module that defines a square """

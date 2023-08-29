@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # 0-square.py
-# Noble Peter
 """Define a class Square."""
 
 

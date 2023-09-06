@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Function's name: matrix_divided()
-
 Test command: python3 -m doctest -v ./tests/2-matrix_divided.txt"""
 
 
@@ -18,6 +17,7 @@ def matrix_divided(matrix, div):
     Returns:
         A new matrix representing the result of the division.
     """
+
     if (not isinstance(matrix, list) or matrix == [] or
             not all(isinstance(row, list) for row in matrix) or
             not all((isinstance(ele, int) or isinstance(ele, float))

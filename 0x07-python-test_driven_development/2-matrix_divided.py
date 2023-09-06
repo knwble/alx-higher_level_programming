@@ -5,7 +5,7 @@ Test command: python3 -m doctest -v ./tests/2-matrix_divided.txt"""
 
 def matrix_divided(matrix, div):
     """Divide all elements of a matrix by a gven number.
-    
+
     Args:
         matrix: A list of lists of ints or floats.
         div: The divisor.

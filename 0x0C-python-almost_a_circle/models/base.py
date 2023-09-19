@@ -5,7 +5,7 @@
 class Base:
     """Represents base of all classes created """
     __nb_objects = 0
-    
+
     def __init__(self, id=None):
         """ Constructor method of the class """
         if id is not None:

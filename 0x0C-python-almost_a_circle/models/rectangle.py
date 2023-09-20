@@ -8,7 +8,7 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initializes attributes of the object"""
-         self.width = width
+        self.width = width
         self.height = height
         self.x = x
         self.y = y
@@ -17,12 +17,12 @@ class Rectangle(Base):
     # getter functions
     @property
     def width(self):
-        """Gets the value for width"""
+        """Gets the width of the rectangle"""
         return self.__width
 
     @property
     def height(self):
-        """Gets the value for height"""
+        """Gets the height of the rectangle"""
         return self.__height
 
     @property
@@ -35,10 +35,10 @@ class Rectangle(Base):
         """Gets the value for y"""
         return self.__y
 
-    # List of setter functions
+    # setter functions
     @width.setter
     def width(self, value):
-        """Sets the value for width"""
+        """Sets the width of the rectangle"""
         if (type(value) is not int):
             raise TypeError("width must be an integer")
 
@@ -49,7 +49,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        """Sets the value for height"""
+        """Sets the height of the rectangle"""
         if (type(value) is not int):
             raise TypeError("height must be an integer")
 

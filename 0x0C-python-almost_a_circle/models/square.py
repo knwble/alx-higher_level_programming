@@ -14,3 +14,8 @@ class Square(Rectangle):
         self.y = y
         self.id = None
         super().__init__(size, size, x, y, id)
+
+    def __str__(self):
+        """Returns an object string representation"""
+        return ("[Square] ({}) {}/{} - {}/{}".format(
+            self.id, self.__x, self.__y, self.__width))

@@ -62,3 +62,26 @@ class Base:
 
         dummy_instances.update(**dictionary)
         return (dummy_instances)
+
+    @classmethod
+    def load_from_file(cls):
+        """ Method that returns a list of instances
+        Returns:
+        If the file does not exist or there is an
+        error reading it - an empty list.
+        Otherwise - a list of instantiated class instances.
+    """
+    instances = []
+
+    try:
+        filename = f"{cls.__name__}.json"
+        with open(filename, "r", encoding="utf-8") as json_file:
+            data = json_file.read()
+            json_list = Base.from_json_string(data)
+            instances = [cls.create(**obj) for obj in json_list]
+    except FileNotFoundError:
+        pass
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return instances

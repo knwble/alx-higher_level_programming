@@ -112,3 +112,43 @@ class Base:
         if not os.path.isfile(str(cls.__name__) + ".csv"):
             raise FileNotFoundError("File not found")
             return ("[]")
+
+    @staticmethod
+    def draw(rectangles, squares):
+        """Draw Rectangles and Squares using the turtle module.
+        Args:
+            rectangles (list): A list of Rectangle objects to draw.
+            squares (list): A list of Square objects to draw.
+        """
+        turt = turtle.Turtle()
+        turt.screen.bgcolor("#E57373")
+        turt.pensize(3)
+        turt.shape("turtle")
+
+        turt.color("#81C784")
+        for sq in squares:
+            turt.showturtle()
+            turt.up()
+            turt.goto(sq.x, sq.y)
+            turt.down()
+            for _ in range(2):
+                turt.forward(sq.width)
+                turt.left(90)
+                turt.forward(sq.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        turt.color("#64B5F6")
+        for rect in rectangles:
+            turt.showturtle()
+            turt.up()
+            turt.goto(rect.x, rect.y)
+            turt.down()
+            for _ in range(2):
+                turt.forward(rect.width)
+                turt.left(90)
+                turt.forward(rect.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        turtle.exitonclick()

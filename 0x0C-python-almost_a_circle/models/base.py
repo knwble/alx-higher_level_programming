@@ -68,7 +68,7 @@ class Base:
     def load_from_file(cls):
         """ Method that returns a list of instances."""
 
-    file_name = cls.__name__ + ".json"
+        file_name = cls.__name__ + ".json"
         list_of_instances = []
         list_dictionaries = []
 

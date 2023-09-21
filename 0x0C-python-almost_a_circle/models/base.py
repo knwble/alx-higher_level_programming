@@ -79,3 +79,36 @@ class Base:
                 for dictionary in list_dictionaries:
                     list_of_instances.append(cls.create(**dictionary))
         return list_of_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Serializes in csv """
+        desc = []
+        with open(str(cls.__name__) + ".csv", mode='w') as csv_file:
+            wr = csv.writer(csv_file, delimiter=',')
+            if list_objs is None:
+                wr.writerow(desc)
+            else:
+                wr.writerow(list(list_objs[0].to_dictionary().keys()))
+                for instances in list_objs:
+                    wr.writerow(list(instances.to_dictionary().values()))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Deserializes in csv """
+        desc = []
+        with open(str(cls.__name__) + ".csv", encoding='utf-8') as csv_file:
+            reader = csv.reader(csv_file, delimiter=',')
+            flag = 0
+            for row in reader:
+                if flag == 0:
+                    keys = row
+                    flag = 1
+                else:
+                    row = map(lambda x: int(x), row[:])
+                    desc.append(cls.create(**dict(zip(keys, row))))
+            return (desc)
+
+        if not os.path.isfile(str(cls.__name__) + ".csv"):
+            raise FileNotFoundError("File not found")
+            return ("[]")    

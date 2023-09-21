@@ -111,4 +111,4 @@ class Base:
 
         if not os.path.isfile(str(cls.__name__) + ".csv"):
             raise FileNotFoundError("File not found")
-            return ("[]")    
+            return ("[]")

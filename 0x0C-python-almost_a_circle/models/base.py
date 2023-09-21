@@ -3,6 +3,7 @@
 import json
 import csv
 import turtle
+import os
 
 
 class Base:
@@ -65,19 +66,16 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """ Method that returns a list of instances
-        Returns:
-        If the file does not exist or there is an
-        error reading it - an empty list.
-        Otherwise - a list of instantiated class instances.
-    """
-    desc = []
-        try:
-            with open(cls.__name__ + '.json', encoding='utf-8') as my_file:
-                list_objs = Base.from_json_string(my_file.read())
-                for objs in list_objs:
-                    desc.append(cls.create(**objs))
-        except Exception:
-            return (desc)
+        """ Method that returns a list of instances."""
 
-        return (desc)
+    file_name = cls.__name__ + ".json"
+        list_of_instances = []
+        list_dictionaries = []
+
+        if os.path.exists(file_name):
+            with open(file_name, 'r') as my_file:
+                my_str = my_file.read()
+                list_dictionaries = cls.from_json_string(my_str)
+                for dictionary in list_dictionaries:
+                    list_of_instances.append(cls.create(**dictionary))
+        return list_of_instances

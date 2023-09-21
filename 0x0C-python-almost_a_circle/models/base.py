@@ -120,35 +120,35 @@ class Base:
             rectangles (list): A list of Rectangle objects to draw.
             squares (list): A list of Square objects to draw.
         """
-        turt = turtle.Turtle()
-        turt.screen.bgcolor("#E57373")
-        turt.pensize(3)
-        turt.shape("turtle")
+        turtle_instance = turtle.Turtle()
+        turtle_instance.screen.bgcolor("#E57373")
+        turtle_instance.pensize(3)
+        turtle_instance.shape("turtle")
 
-        turt.color("#81C784")
+        turtle_instance.color("#81C784")
         for sq in squares:
-            turt.showturtle()
-            turt.up()
-            turt.goto(sq.x, sq.y)
-            turt.down()
-            for _ in range(2):
-                turt.forward(sq.width)
-                turt.left(90)
-                turt.forward(sq.height)
-                turt.left(90)
-            turt.hideturtle()
+            turtle_instance.showturtle()
+            turtle_instance.up()
+            turtle_instance.goto(sq.x, sq.y)
+            turtle_instance.down()
+            for i in range(2):
+                turtle_instance.forward(sq.width)
+                turtle_instance.left(90)
+                turtle_instance.forward(sq.height)
+                turtle_instance.left(90)
+            turtle_instance.hideturtle()
 
-        turt.color("#64B5F6")
+        turtle_instance.color("#64B5F6")
         for rect in rectangles:
-            turt.showturtle()
-            turt.up()
-            turt.goto(rect.x, rect.y)
-            turt.down()
-            for _ in range(2):
-                turt.forward(rect.width)
-                turt.left(90)
-                turt.forward(rect.height)
-                turt.left(90)
-            turt.hideturtle()
+            turtle_instance.showturtle()
+            turtle_instance.up()
+            turtle_instance.goto(rect.x, rect.y)
+            turtle_instance.down()
+            for i in range(2):
+                turtle_instance.forward(rect.width)
+                turtle_instance.left(90)
+                turtle_instance.forward(rect.height)
+                turtle_instance.left(90)
+            turtle_instance.hideturtle()
 
         turtle.exitonclick()

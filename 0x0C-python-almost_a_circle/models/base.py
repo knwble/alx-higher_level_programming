@@ -71,17 +71,13 @@ class Base:
         error reading it - an empty list.
         Otherwise - a list of instantiated class instances.
     """
-    instances = []
+    desc = []
+        try:
+            with open(cls.__name__ + '.json', encoding='utf-8') as my_file:
+                list_objs = Base.from_json_string(my_file.read())
+                for objs in list_objs:
+                    desc.append(cls.create(**objs))
+        except Exception:
+            return (desc)
 
-    try:
-        filename = f"{cls.__name__}.json"
-        with open(filename, "r", encoding="utf-8") as json_file:
-            data = json_file.read()
-            json_list = Base.from_json_string(data)
-            instances = [cls.create(**obj) for obj in json_list]
-    except FileNotFoundError:
-        pass
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-    return instances
+        return (desc)

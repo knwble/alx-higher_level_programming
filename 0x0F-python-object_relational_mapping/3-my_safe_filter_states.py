@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Displays all values in the states table of hbtn_0e_0_usa where name matches the argument.
-This script uses parameterized queries to prevent MySQL injections.
+Displays all values in the states table of hbtn_0e_0_usa
 """
 
 import MySQLdb as db

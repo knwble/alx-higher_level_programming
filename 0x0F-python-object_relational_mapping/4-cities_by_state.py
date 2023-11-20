@@ -7,24 +7,19 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    try:
-        db = MySQLdb.connect(
-            host="localhost",
-            user=sys.argv[1],
-            passwd=sys.argv[2],
-            db=sys.argv[3],
-            port=3306
-        )
+    db = MySQLdb.connect(
+        host="localhost",
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3],
+        port=3306
+    )
 
-        cur = db.cursor()
-        cur.execute("SELECT * FROM cities ORDER BY id ASC")
-        [print(row) for row in cur.fetchall()]
+    cur = db.cursor()
+    cur.execute("SELECT * FROM cities ORDER BY id ASC")
+    [print(row) for row in cur.fetchall()]
 
-    except MySQLdb.Error as e:
-        print("Error:", e)
-
-    finally:
-        if cur:
-            cur.close()
-        if db:
-            db.close()
+    if cur:
+        cur.close()
+    if db:
+        db.close()

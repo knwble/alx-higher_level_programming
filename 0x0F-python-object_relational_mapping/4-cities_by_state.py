@@ -17,9 +17,9 @@ if __name__ == "__main__":
         )
 
         cur = db.cursor()
-        cur.execute("""
+        cur.execute("
             SELECT * FROM cities ORDER BY id ASC
-        """)
+        ")
         rows = cur.fetchall()
 
         for row in rows:

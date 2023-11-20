@@ -18,10 +18,7 @@ if __name__ == "__main__":
 
         cur = db.cursor()
         cur.execute("SELECT * FROM cities ORDER BY id ASC")
-        rows = cur.fetchall()
-
-        for row in rows:
-            print(row)
+        [print(row) for row in cur.fetchall()]
 
     except MySQLdb.Error as e:
         print("Error:", e)

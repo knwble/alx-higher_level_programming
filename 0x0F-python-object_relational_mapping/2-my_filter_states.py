@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Displays all values in the states table of hbtn_0e_0_usa where name matches the argument.
+Displays all values in the states where
+`name` matches the argument from the database `hbtn_0e_0_usa`.
 """
 
 import MySQLdb as db
@@ -21,7 +22,8 @@ if __name__ == '__main__':
         db_cursor = db_connect.cursor()
 
         # Create the SQL query with the argument using format and execute it
-        query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC".format(argv[4])
+        query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY \
+                        states.id ASC".format(argv[4])
         db_cursor.execute(query)
 
         # Fetch all the rows from the query result

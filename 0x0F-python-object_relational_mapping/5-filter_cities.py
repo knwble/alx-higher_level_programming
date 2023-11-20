@@ -18,7 +18,7 @@ if __name__ == "__main__":
         )
 
         with db_connect.cursor() as db_cursor:
-            # Execute SQL query to list cities of the given state sorted by id in ascending order
+
             db_cursor.execute(
                 "SELECT cities.id, cities.name "
                 "FROM cities "

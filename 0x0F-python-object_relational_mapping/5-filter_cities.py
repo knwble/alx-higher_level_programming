@@ -1,43 +1,38 @@
 #!/usr/bin/python3
-"""
+
+'''
 This script takes in the name of a state as an argument and prints all cities
-"""
+'''
 
-import MySQLdb as db
-from sys import argv
+import MySQLdb
+import sys
 
-if __name__ == "__main__":
-    try:
-        # Connect to MySQL server running on localhost at port 3306
-        db_connect = db.connect(
-            host="localhost",
-            port=3306,
-            user=argv[1],
-            passwd=argv[2],
-            db=argv[3]
-        )
+if __name__ == '__main__':
+    data_base = MySQLdb.connect(
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3],
+        port=3306,
+        host='localhost'
+    )
 
-        with db_connect.cursor() as db_cursor:
+    cursor = data_base.cursor()
+    cursor.execute(
+        'SELECT cities.name FROM cities '
+        'INNER JOIN states ON cities.state_id = states.id '
+        'WHERE states.name = %s '
+        'ORDER BY cities.id ASC', (sys.argv[4], )
+    )
 
-            db_cursor.execute(
-                "SELECT cities.id, cities.name "
-                "FROM cities "
-                "JOIN states ON cities.state_id = states.id "
-                "WHERE states.name LIKE BINARY %(state_name)s "
-                "ORDER BY cities.id ASC",
-                {'state_name': argv[4]}
-            )
-            rows_selected = db_cursor.fetchall()
+    cities = cursor.fetchall()
 
-        # Display the results
-        if rows_selected:
-            for row in rows_selected:
-                print(row[1])
+    index = 0
+    for city in cities:
+        if index != 0:
+            print(", ", end="")
+        print("%s" % city, end="")
+        index += 1
+    print("")
 
-    except db.Error as e:
-        print("Error:", e)
-
-    finally:
-        # Close the database connection
-        if db_connect:
-            db_connect.close()
+    cursor.close()
+    data_base.close()

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" 
-Lists all State objects containing the letter 'a' 
+"""
+Lists all State objects containing the letter 'a'
 from the database hbtn_0e_6_usa.
 """
 
@@ -17,10 +17,11 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    
+
     # Query and display State objects containing 'a' in name
-    states_with_a = session.query(State).filter(State.name.like('%a%')).order_by(State.id)
+    states_with_a = session.query(State).filter
+    (State.name.like('%a%')).order_by(State.id)
     for instance in states_with_a:
         print(instance.id, instance.name, sep=": ")
-    
+
     session.close()

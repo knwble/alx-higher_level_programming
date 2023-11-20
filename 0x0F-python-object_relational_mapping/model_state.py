@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This script defines a State class and a Base class to work with MySQLAlchemy ORM.
+This script defines a State class and a Base class
+to work with MySQLAlchemy ORM.
 """
 
 from sqlalchemy import Column, Integer, String
@@ -24,8 +25,3 @@ class State(Base):
 
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
-
-# MySQL Connection
-if __name__ == "__main__":
-    db = create_engine('mysql+mysqldb://username:password@localhost:3306/database')
-    Base.metadata.create_all(db)

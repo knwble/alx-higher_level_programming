@@ -6,20 +6,12 @@ API to display the user's id
 
 
 import requests
-import sys
+from sys import argv
+
 
 if __name__ == '__main__':
-    username = sys.argv[1]
-    password = sys.argv[2]
-
-    r = requests.get('https://api.github.com/user', auth=(username, password))
-
+    r = requests.get('https://api.github.com/user', auth=(argv[1], argv[2]))
     try:
-        json_response = r.json()
-
-        if 'id' in json_response:
-            print(json_response['id'])
-        else:
-            print("ID not found in the response")
+        print(r.json().get('id'))
     except ValueError:
         print('Not a valid JSON')
